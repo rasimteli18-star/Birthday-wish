@@ -5,103 +5,187 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Madam ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg,#fde2e4,#fadadd);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow:hidden;
+  }
 
-body{
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(160deg,#f6d1dc,#e6d7ff);
-  font-family:Poppins,sans-serif;
-}
+  .screen{
+    display:none;
+    text-align:center;
+    padding:20px;
+    animation: fadeIn 1s ease;
+  }
+  .active{display:block;}
 
-.container{
-  text-align:center;
-}
+  h1{
+    font-size:2.2rem;
+    color:#5a2a2a;
+  }
 
-h1{
-  font-family:'Playfair Display',serif;
-  color:#4b2354;
-  margin-bottom:15px;
-}
+  .btn{
+    margin-top:20px;
+    padding:12px 26px;
+    border:none;
+    border-radius:30px;
+    background:#ff8fab;
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+  }
 
-p{
-  color:#5f4b66;
-  font-size:15px;
-  margin-bottom:15px;
-}
+  /* cake */
+  .cake-box{
+    position:relative;
+    max-width:320px;
+    margin:auto;
+  }
+  .cake-box img{
+    width:100%;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+  }
 
-.cake-wrap{
-  position:relative;
-  width:300px;
-  max-width:90%;
-  margin:auto;
-}
+  .candle{
+    position:absolute;
+    width:14px;
+    height:35px;
+    background:linear-gradient(#7ed957,#4caf50);
+    border-radius:4px;
+    top:12%;
+    cursor:pointer;
+  }
+  .flame{
+    position:absolute;
+    top:-14px;
+    left:50%;
+    transform:translateX(-50%);
+    width:12px;
+    height:12px;
+    background:orange;
+    border-radius:50%;
+    box-shadow:0 0 12px orange;
+    animation:flicker .2s infinite;
+  }
 
-.cake-wrap img{
-  width:100%;
-  border-radius:14px;
-  box-shadow:0 20px 40px rgba(0,0,0,.35);
-}
+  .off .flame{display:none;}
 
-/* Candles */
-.candle{
-  position:absolute;
-  width:10px;
-  height:36px;
-  background:linear-gradient(#fff,#ddd);
-  border-radius:4px;
-  cursor:pointer;
-}
+  @keyframes flicker{
+    0%{transform:translateX(-50%) scale(1);}
+    100%{transform:translateX(-50%) scale(.8);}
+  }
 
-.flame{
-  position:absolute;
-  top:-18px;
-  left:-3px;
-  width:16px;
-  height:20px;
-  background:radial-gradient(circle at 50% 60%,#ffd27d,#ff9f1c,#ff6b00);
-  border-radius:50%;
-  animation:flicker 1s infinite;
-}
+  @keyframes fadeIn{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+  }
 
-@keyframes flicker{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(.85)}
-}
+  .letter{
+    max-width:600px;
+    background:rgba(255,255,255,.7);
+    padding:25px;
+    border-radius:20px;
+    color:#4a2a2a;
+    font-size:1rem;
+    line-height:1.7;
+    animation: fadeIn 1.5s ease;
+  }
+
+  .fade-out{
+    animation: fadeOut 2s ease forwards;
+  }
+
+  @keyframes fadeOut{
+    to{opacity:0;}
+  }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- Screen 1 -->
+<div class="screen active" id="s1">
   <h1>Happy Birthday Madam ❤️</h1>
-  <p>Candles par tap karo aur apni wishes mango ✨</p>
+  <p>Today is all about you and your beautiful smile.</p>
+  <button class="btn" onclick="next()">Continue</button>
+</div>
 
-  <div class="cake-wrap">
-    <img src="cake.jpg" alt="Birthday Cake">
+<!-- Screen 2 : Cake -->
+<div class="screen" id="s2">
+  <h1>Make a Wish ✨</h1>
 
-    <!-- 6 Candles -->
-    <div class="candle" style="top:22%;left:30%"><div class="flame"></div></div>
-    <div class="candle" style="top:20%;left:38%"><div class="flame"></div></div>
-    <div class="candle" style="top:18%;left:46%"><div class="flame"></div></div>
-    <div class="candle" style="top:18%;left:54%"><div class="flame"></div></div>
-    <div class="candle" style="top:20%;left:62%"><div class="flame"></div></div>
-    <div class="candle" style="top:22%;left:70%"><div class="flame"></div></div>
+  <div class="cake-box">
+    <img src="cake.jpg" alt="Cake">
+
+    <!-- 6 candles -->
+    <div class="candle" style="left:22%;" onclick="blow(this)">
+      <div class="flame"></div>
+    </div>
+    <div class="candle" style="left:34%;" onclick="blow(this)">
+      <div class="flame"></div>
+    </div>
+    <div class="candle" style="left:46%;" onclick="blow(this)">
+      <div class="flame"></div>
+    </div>
+    <div class="candle" style="left:58%;" onclick="blow(this)">
+      <div class="flame"></div>
+    </div>
+    <div class="candle" style="left:70%;" onclick="blow(this)">
+      <div class="flame"></div>
+    </div>
+    <div class="candle" style="left:82%;" onclick="blow(this)">
+      <div class="flame"></div>
+    </div>
+  </div>
+
+  <button class="btn" onclick="next()">Next</button>
+</div>
+
+<!-- Screen 3 : Letter -->
+<div class="screen" id="s3">
+  <div class="letter">
+    <h2>For You ❤️</h2>
+    <p>
+      You are not just special because today is your birthday,  
+      you are special because of the way you exist.  
+      The way you care, the way you smile, and the calm you bring  
+      without even trying.  
+      <br><br>
+      You have a value in my life that words can never fully explain.  
+      Your presence matters. Your happiness matters.  
+      And today, more than anything, I hope you feel how important  
+      you truly are.  
+      <br><br>
+      Happy Birthday Madam ❤️  
+      Always stay the way you are.
+    </p>
   </div>
 </div>
 
 <script>
-document.querySelectorAll('.candle').forEach(candle=>{
-  candle.addEventListener('click',()=>{
-    const flame=candle.querySelector('.flame');
-    if(flame) flame.style.display='none';
-  });
-});
+let i = 1;
+function next(){
+  document.getElementById("s"+i).classList.remove("active");
+  i++;
+  document.getElementById("s"+i).classList.add("active");
+
+  if(i===3){
+    setTimeout(()=>{
+      document.getElementById("s3").classList.add("fade-out");
+    },8000);
+  }
+}
+
+function blow(c){
+  c.classList.add("off");
+}
 </script>
 
 </body>
