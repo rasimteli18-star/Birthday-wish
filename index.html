@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Madam ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(160deg,#f6d1dc,#e6d7ff);
+  font-family:Poppins,sans-serif;
+}
+
+.container{
+  text-align:center;
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  color:#4b2354;
+  margin-bottom:15px;
+}
+
+p{
+  color:#5f4b66;
+  font-size:15px;
+  margin-bottom:15px;
+}
+
+.cake-wrap{
+  position:relative;
+  width:300px;
+  max-width:90%;
+  margin:auto;
+}
+
+.cake-wrap img{
+  width:100%;
+  border-radius:14px;
+  box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
+/* Candles */
+.candle{
+  position:absolute;
+  width:10px;
+  height:36px;
+  background:linear-gradient(#fff,#ddd);
+  border-radius:4px;
+  cursor:pointer;
+}
+
+.flame{
+  position:absolute;
+  top:-18px;
+  left:-3px;
+  width:16px;
+  height:20px;
+  background:radial-gradient(circle at 50% 60%,#ffd27d,#ff9f1c,#ff6b00);
+  border-radius:50%;
+  animation:flicker 1s infinite;
+}
+
+@keyframes flicker{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(.85)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Happy Birthday Madam ❤️</h1>
+  <p>Candles par tap karo aur apni wishes mango ✨</p>
+
+  <div class="cake-wrap">
+    <img src="cake.jpg" alt="Birthday Cake">
+
+    <!-- 6 Candles -->
+    <div class="candle" style="top:22%;left:30%"><div class="flame"></div></div>
+    <div class="candle" style="top:20%;left:38%"><div class="flame"></div></div>
+    <div class="candle" style="top:18%;left:46%"><div class="flame"></div></div>
+    <div class="candle" style="top:18%;left:54%"><div class="flame"></div></div>
+    <div class="candle" style="top:20%;left:62%"><div class="flame"></div></div>
+    <div class="candle" style="top:22%;left:70%"><div class="flame"></div></div>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.candle').forEach(candle=>{
+  candle.addEventListener('click',()=>{
+    const flame=candle.querySelector('.flame');
+    if(flame) flame.style.display='none';
+  });
+});
+</script>
+
+</body>
+</html>
